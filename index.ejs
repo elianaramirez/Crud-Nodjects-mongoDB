@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <title>SIS-624-SERVIDORES-PROYECTO</title>
+        <!--BOOTSTRAP 4 CDN -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" 
+        crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div style="background-color:#FFE4E1">
+       
+       <nav class="navbar navbar-dark bg-primary mb-5">
+        <a href="/" class="navbar-brand"> INSTITUTO SAN MARTIN - CURSOS DE INVIERNO - DISEÑO GRÁFICO</a>
+       </nav>
+       
+       
+       <div class="container">
+           <div class="row">
+               <!--Formulario -->
+               <div class="col-md-7">
+                   <div class="card">
+                       <div class="card-body">
+                           <form action="/add" method="POST">
+                               <div class="form-group">
+                                   <input type="text" name="nombre" placeholder=" NOMBRE COMPLETO" class="form-control">
+                               </div>
+                               <textarea name="monto" cols= "80" class="form-control" placeholder="INSERTE EL MONTO EN BS"></textarea> 
+                               </div>
+                               <button type="submit" class="btn btn-danger btn-lg btn-block ">Registrar</button>
+                               
+                           </form>
+
+                       </div>
+
+                   </div>
+            </div>
+               <!--Lista de los datos-->
+               <div class="col-md-5">
+                   <table class="table table-bordered table-hover">
+                       <thead>
+                           <tr>
+                            <th>N°</th>
+                            <th> Estudiante </th>
+                            <th>MONTO</th>
+                            <th>operaciones</th>
+                           </tr>
+                       </thead>
+                       <tbody>
+                        <%for(var i=0; i< tasks.length; i++) { %> 
+                        <tr>
+                            <td><%= i+1 %></td>
+                            <td><%= tasks[i].nombre %></td>
+                            <td><%= tasks[i].monto %></td>
+                            <td>
+                              <a href="/Actualizar/<%= tasks[i]._id%>" 
+                                class="btn <%= tasks[i].status ? 'btn-warning' : 'btn-dark'%>">Actualizar</a>  
+                              <a href="/Eliminar/<%= tasks[i]._id %>"class="btn btn-danger">Eliminar</a>
+                              <a href="/Editar/<%= tasks[i]._id %>" class="btn btn-primary">Editar</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                       </tbody>
+                   </table>
+            </div>    
+           </div>
+       </div>
+    </div>
+    </body>
+    <nav class="navbar navbar-dark bg-secondary mb-5">
+        <a href="/" class="navbar-brand"> DISEÑO GRÁFICO-2021 </a>
+       </nav>
+    
+</html>
